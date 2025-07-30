@@ -18,10 +18,7 @@ export default function LandingPage() {
           </div>
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link
-                href="/browse-freelancers"
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
-              >
+              <Link href="/freelancers" className="transition-colors hover:text-foreground/80 text-foreground/60">
                 Browse Talent
               </Link>
               <Link href="/how-it-works" className="transition-colors hover:text-foreground/80 text-foreground/60">
@@ -70,7 +67,7 @@ export default function LandingPage() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" className="text-base px-8 bg-transparent" asChild>
-                  <Link href="/browse-freelancers">Browse Talent</Link>
+                  <Link href="/freelancers">Browse Talent</Link>
                 </Button>
               </div>
               <p className="text-sm text-muted-foreground mt-4">Free to join • No setup fees • Get paid securely</p>
@@ -198,7 +195,7 @@ export default function LandingPage() {
                     <Link href="/auth/signup">Join as Freelancer</Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild>
-                    <Link href="/browse-freelancers">Browse Talent</Link>
+                    <Link href="/freelancers">Browse Talent</Link>
                   </Button>
                 </div>
               </div>
