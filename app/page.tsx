@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Briefcase, Star, Globe, Shield, Zap } from "lucide-react"
+import { ArrowRight, Briefcase, Star, Globe, Shield, Zap, CheckCircle } from "lucide-react"
 import Link from "next/link"
 
 export default function LandingPage() {
@@ -19,21 +18,26 @@ export default function LandingPage() {
           </div>
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="#features" className="transition-colors hover:text-foreground/80 text-foreground/60">
-                Features
+              <Link
+                href="/browse-freelancers"
+                className="transition-colors hover:text-foreground/80 text-foreground/60"
+              >
+                Browse Talent
               </Link>
-              <Link href="#how-it-works" className="transition-colors hover:text-foreground/80 text-foreground/60">
+              <Link href="/how-it-works" className="transition-colors hover:text-foreground/80 text-foreground/60">
                 How it works
               </Link>
-              <Link href="#pricing" className="transition-colors hover:text-foreground/80 text-foreground/60">
+              <Link href="/pricing" className="transition-colors hover:text-foreground/80 text-foreground/60">
                 Pricing
               </Link>
             </nav>
             <div className="flex items-center space-x-2">
-              <Button variant="ghost" size="sm">
-                Sign In
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/auth/signin">Sign In</Link>
               </Button>
-              <Button size="sm">Sign Up</Button>
+              <Button size="sm" asChild>
+                <Link href="/auth/signup">Sign Up</Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -59,12 +63,14 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <Button size="lg" className="text-base px-8">
-                  Start Freelancing Today
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button size="lg" className="text-base px-8" asChild>
+                  <Link href="/auth/signup">
+                    Start Freelancing Today
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="text-base px-8 bg-transparent">
-                  Browse Talent
+                <Button variant="outline" size="lg" className="text-base px-8 bg-transparent" asChild>
+                  <Link href="/browse-freelancers">Browse Talent</Link>
                 </Button>
               </div>
               <p className="text-sm text-muted-foreground mt-4">Free to join • No setup fees • Get paid securely</p>
@@ -73,7 +79,7 @@ export default function LandingPage() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -116,7 +122,7 @@ export default function LandingPage() {
         </section>
 
         {/* How it Works Section */}
-        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -188,9 +194,11 @@ export default function LandingPage() {
                   </li>
                 </ul>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg">Join as Freelancer</Button>
-                  <Button variant="outline" size="lg">
-                    Learn More
+                  <Button size="lg" asChild>
+                    <Link href="/auth/signup">Join as Freelancer</Link>
+                  </Button>
+                  <Button variant="outline" size="lg" asChild>
+                    <Link href="/browse-freelancers">Browse Talent</Link>
                   </Button>
                 </div>
               </div>
@@ -221,34 +229,6 @@ export default function LandingPage() {
                     </CardContent>
                   </Card>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Ready to start your freelance journey?
-                </h2>
-                <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of successful freelancers who are already earning from their skills.
-                </p>
-              </div>
-              <div className="w-full max-w-sm space-y-2">
-                <div className="flex gap-2">
-                  <Input type="email" placeholder="Enter your email" className="flex-1" />
-                  <Button type="submit">Get Started</Button>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Free to join. Start earning today.{" "}
-                  <Link href="/terms" className="underline underline-offset-2">
-                    Terms & Conditions
-                  </Link>
-                </p>
               </div>
             </div>
           </div>
