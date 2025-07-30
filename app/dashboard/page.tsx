@@ -200,6 +200,12 @@ export default function FreelancerDashboard() {
                         Preview Public Profile
                       </Link>
                     </Button>
+                    <Button className="w-full justify-start bg-transparent" variant="outline" asChild>
+                      <Link href="/profile/edit">
+                        <User className="h-4 w-4 mr-2" />
+                        Edit Profile
+                      </Link>
+                    </Button>
                     <Button className="w-full justify-start bg-transparent" variant="outline">
                       <FileText className="h-4 w-4 mr-2" />
                       Update Portfolio
