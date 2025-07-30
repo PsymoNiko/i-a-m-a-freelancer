@@ -141,6 +141,46 @@ export default function EditProfile() {
     setExperience(experience.filter((exp) => exp.id !== id))
   }
 
+  const addEducation = () => {
+    const newEdu = {
+      id: Date.now(),
+      degree: "",
+      school: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+    }
+    setEducation([...education, newEdu])
+  }
+
+  const updateEducation = (id: number, field: string, value: string) => {
+    setEducation(education.map((edu) => (edu.id === id ? { ...edu, [field]: value } : edu)))
+  }
+
+  const removeEducation = (id: number) => {
+    setEducation(education.filter((edu) => edu.id !== id))
+  }
+
+  const addPortfolioProject = () => {
+    const newProject = {
+      id: Date.now(),
+      title: "",
+      description: "",
+      url: "",
+      image: "/placeholder.svg?height=200&width=300",
+      technologies: [],
+    }
+    setPortfolio([...portfolio, newProject])
+  }
+
+  const updatePortfolio = (id: number, field: string, value: any) => {
+    setPortfolio(portfolio.map((project) => (project.id === id ? { ...project, [field]: value } : project)))
+  }
+
+  const removePortfolio = (id: number) => {
+    setPortfolio(portfolio.filter((project) => project.id !== id))
+  }
+
   const handleSave = async () => {
     setIsLoading(true)
     // Simulate save
@@ -515,7 +555,7 @@ export default function EditProfile() {
                   <h2 className="text-2xl font-bold">Education</h2>
                   <p className="text-muted-foreground">Add your educational background</p>
                 </div>
-                <Button>
+                <Button onClick={addEducation}>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Education
                 </Button>
@@ -524,34 +564,56 @@ export default function EditProfile() {
               {education.map((edu) => (
                 <Card key={edu.id}>
                   <CardHeader>
-                    <CardTitle className="flex items-center">
-                      <GraduationCap className="h-5 w-5 mr-2" />
-                      Education
-                    </CardTitle>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="flex items-center">
+                        <GraduationCap className="h-5 w-5 mr-2" />
+                        Education
+                      </CardTitle>
+                      <Button variant="outline" size="sm" onClick={() => removeEducation(edu.id)}>
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
                       <Label>Degree</Label>
-                      <Input value={edu.degree} placeholder="e.g., Bachelor of Science in Computer Science" />
+                      <Input
+                        value={edu.degree}
+                        onChange={(e) => updateEducation(edu.id, "degree", e.target.value)}
+                        placeholder="e.g., Bachelor of Science in Computer Science"
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label>School</Label>
-                      <Input value={edu.school} placeholder="University or institution name" />
+                      <Input
+                        value={edu.school}
+                        onChange={(e) => updateEducation(edu.id, "school", e.target.value)}
+                        placeholder="University or institution name"
+                      />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label>Start Date</Label>
-                        <Input type="month" value={edu.startDate} />
+                        <Input
+                          type="month"
+                          value={edu.startDate}
+                          onChange={(e) => updateEducation(edu.id, "startDate", e.target.value)}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label>End Date</Label>
-                        <Input type="month" value={edu.endDate} />
+                        <Input
+                          type="month"
+                          value={edu.endDate}
+                          onChange={(e) => updateEducation(edu.id, "endDate", e.target.value)}
+                        />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <Label>Description</Label>
                       <Textarea
                         value={edu.description}
+                        onChange={(e) => updateEducation(edu.id, "description", e.target.value)}
                         placeholder="Relevant coursework, achievements, etc."
                         className="min-h-[80px]"
                       />
@@ -568,7 +630,7 @@ export default function EditProfile() {
                   <h2 className="text-2xl font-bold">Portfolio</h2>
                   <p className="text-muted-foreground">Showcase your best work</p>
                 </div>
-                <Button>
+                <Button onClick={addPortfolioProject}>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Project
                 </Button>
@@ -583,7 +645,7 @@ export default function EditProfile() {
                           <Award className="h-5 w-5 mr-2" />
                           {project.title}
                         </CardTitle>
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" onClick={() => removePortfolio(project.id)}>
                           <X className="h-4 w-4" />
                         </Button>
                       </div>
@@ -598,15 +660,26 @@ export default function EditProfile() {
                       </div>
                       <div className="space-y-2">
                         <Label>Project Title</Label>
-                        <Input value={project.title} />
+                        <Input
+                          value={project.title}
+                          onChange={(e) => updatePortfolio(project.id, "title", e.target.value)}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label>Description</Label>
-                        <Textarea value={project.description} className="min-h-[80px]" />
+                        <Textarea
+                          value={project.description}
+                          onChange={(e) => updatePortfolio(project.id, "description", e.target.value)}
+                          className="min-h-[80px]"
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label>Project URL</Label>
-                        <Input value={project.url} placeholder="https://..." />
+                        <Input
+                          value={project.url}
+                          onChange={(e) => updatePortfolio(project.id, "url", e.target.value)}
+                          placeholder="https://..."
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label>Technologies</Label>
