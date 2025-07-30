@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, CheckCircle, Briefcase, Star, Globe, Shield, Zap } from "lucide-react"
+import { ArrowRight, Briefcase, Star, Globe, Shield, Zap, FileText, GitFork, ShoppingCart } from "lucide-react"
 import Link from "next/link"
 
 export default function LandingPage() {
@@ -19,14 +18,14 @@ export default function LandingPage() {
           </div>
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Link href="#features" className="transition-colors hover:text-foreground/80 text-foreground/60">
-                Features
+              <Link href="/resume-review" className="transition-colors hover:text-foreground/80 text-foreground/60">
+                Resume Review
               </Link>
-              <Link href="#how-it-works" className="transition-colors hover:text-foreground/80 text-foreground/60">
-                How it works
+              <Link href="/enhanced-review" className="transition-colors hover:text-foreground/80 text-foreground/60">
+                AI Review
               </Link>
-              <Link href="#pricing" className="transition-colors hover:text-foreground/80 text-foreground/60">
-                Pricing
+              <Link href="/orders" className="transition-colors hover:text-foreground/80 text-foreground/60">
+                Orders
               </Link>
             </nav>
             <div className="flex items-center space-x-2">
@@ -47,39 +46,69 @@ export default function LandingPage() {
               <div className="space-y-2">
                 <Badge variant="secondary" className="mb-4">
                   <Star className="w-3 h-3 mr-1" />
-                  Trusted by 50,000+ freelancers
+                  Complete Freelancer Toolkit
                 </Badge>
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Turn your skills into
-                  <span className="text-primary"> success</span>
+                  Perfect your profile,
+                  <span className="text-primary"> manage your projects</span>
                 </h1>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                  Connect with clients worldwide, showcase your expertise, and build a thriving freelance career. Join
-                  the platform that puts freelancers first.
+                  Get expert resume reviews, AI-powered suggestions, and streamlined order management all in one
+                  platform.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <Button size="lg" className="text-base px-8">
-                  Start Freelancing Today
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="lg" className="text-base px-8 bg-transparent">
-                  Browse Talent
-                </Button>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 w-full max-w-4xl">
+                <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+                  <CardHeader className="pb-4">
+                    <FileText className="h-12 w-12 text-primary mx-auto mb-2" />
+                    <CardTitle className="text-lg">Resume Review</CardTitle>
+                    <CardDescription>Get professional feedback on your resume</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Button asChild className="w-full">
+                      <Link href="/resume-review">Start Review</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+                  <CardHeader className="pb-4">
+                    <GitFork className="h-12 w-12 text-primary mx-auto mb-2" />
+                    <CardTitle className="text-lg">AI-Enhanced Review</CardTitle>
+                    <CardDescription>Advanced AI analysis with personalized tips</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Button asChild className="w-full">
+                      <Link href="/enhanced-review">Try AI Review</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+                  <CardHeader className="pb-4">
+                    <ShoppingCart className="h-12 w-12 text-primary mx-auto mb-2" />
+                    <CardTitle className="text-lg">Order Management</CardTitle>
+                    <CardDescription>Track and manage your freelance projects</CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Button asChild className="w-full">
+                      <Link href="/orders">Manage Orders</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
-              <p className="text-sm text-muted-foreground mt-4">Free to join • No setup fees • Get paid securely</p>
             </div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Everything you need to succeed</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Everything you need in one place</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Our platform provides all the tools and support you need to build and grow your freelance business.
+                  From perfecting your professional profile to managing client relationships, we've got you covered.
                 </p>
               </div>
             </div>
@@ -87,141 +116,31 @@ export default function LandingPage() {
               <Card>
                 <CardHeader>
                   <Globe className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>Global Opportunities</CardTitle>
+                  <CardTitle>Professional Review System</CardTitle>
                   <CardDescription>
-                    Access clients from around the world and work on projects that match your skills and interests.
+                    Get detailed feedback from industry experts on your resume, portfolio, and professional
+                    presentation.
                   </CardDescription>
                 </CardHeader>
               </Card>
               <Card>
                 <CardHeader>
                   <Shield className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>Secure Payments</CardTitle>
+                  <CardTitle>AI-Powered Insights</CardTitle>
                   <CardDescription>
-                    Get paid safely and on time with our escrow system and multiple payment options.
+                    Advanced AI analysis provides personalized recommendations to optimize your profile for success.
                   </CardDescription>
                 </CardHeader>
               </Card>
               <Card>
                 <CardHeader>
                   <Zap className="h-10 w-10 text-primary mb-2" />
-                  <CardTitle>Smart Matching</CardTitle>
+                  <CardTitle>Dynamic Order Processing</CardTitle>
                   <CardDescription>
-                    Our AI-powered system connects you with the right clients based on your skills and preferences.
+                    Streamlined project management with real-time updates, milestone tracking, and secure payments.
                   </CardDescription>
                 </CardHeader>
               </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* How it Works Section */}
-        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">How it works</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Get started in minutes and begin earning from your skills.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 py-12 lg:grid-cols-3 lg:gap-12">
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
-                  1
-                </div>
-                <h3 className="text-xl font-bold">Create Your Profile</h3>
-                <p className="text-muted-foreground">
-                  Showcase your skills, experience, and portfolio to attract the right clients.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
-                  2
-                </div>
-                <h3 className="text-xl font-bold">Find Great Projects</h3>
-                <p className="text-muted-foreground">
-                  Browse opportunities or let clients find you. Apply to projects that match your expertise.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-bold">
-                  3
-                </div>
-                <h3 className="text-xl font-bold">Get Paid</h3>
-                <p className="text-muted-foreground">
-                  Complete your work, get approved, and receive secure payments directly to your account.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Why freelancers choose us</h2>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Join thousands of successful freelancers who have built thriving careers on our platform.
-                  </p>
-                </div>
-                <ul className="grid gap-4 py-4">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    <span>No bidding wars - fair pricing for quality work</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    <span>Direct communication with clients</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    <span>24/7 support and dispute resolution</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    <span>Build long-term client relationships</span>
-                  </li>
-                </ul>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg">Join as Freelancer</Button>
-                  <Button variant="outline" size="lg">
-                    Learn More
-                  </Button>
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-4 w-full max-w-md">
-                  <Card className="text-center p-4">
-                    <CardContent className="p-0">
-                      <div className="text-2xl font-bold text-primary">50K+</div>
-                      <div className="text-sm text-muted-foreground">Active Freelancers</div>
-                    </CardContent>
-                  </Card>
-                  <Card className="text-center p-4">
-                    <CardContent className="p-0">
-                      <div className="text-2xl font-bold text-primary">$2M+</div>
-                      <div className="text-sm text-muted-foreground">Paid to Freelancers</div>
-                    </CardContent>
-                  </Card>
-                  <Card className="text-center p-4">
-                    <CardContent className="p-0">
-                      <div className="text-2xl font-bold text-primary">98%</div>
-                      <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-                    </CardContent>
-                  </Card>
-                  <Card className="text-center p-4">
-                    <CardContent className="p-0">
-                      <div className="text-2xl font-bold text-primary">24/7</div>
-                      <div className="text-sm text-muted-foreground">Support Available</div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -232,23 +151,20 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Ready to start your freelance journey?
+                  Ready to elevate your freelance career?
                 </h2>
                 <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of successful freelancers who are already earning from their skills.
+                  Join thousands of successful freelancers using our comprehensive toolkit.
                 </p>
               </div>
-              <div className="w-full max-w-sm space-y-2">
-                <div className="flex gap-2">
-                  <Input type="email" placeholder="Enter your email" className="flex-1" />
-                  <Button type="submit">Get Started</Button>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Free to join. Start earning today.{" "}
-                  <Link href="/terms" className="underline underline-offset-2">
-                    Terms & Conditions
-                  </Link>
-                </p>
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <Button size="lg" className="text-base px-8">
+                  Get Started Free
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="lg" className="text-base px-8 bg-transparent">
+                  View Demo
+                </Button>
               </div>
             </div>
           </div>
@@ -264,9 +180,6 @@ export default function LandingPage() {
           </Link>
           <Link href="/privacy" className="text-xs hover:underline underline-offset-4">
             Privacy Policy
-          </Link>
-          <Link href="/contact" className="text-xs hover:underline underline-offset-4">
-            Contact
           </Link>
         </nav>
       </footer>
